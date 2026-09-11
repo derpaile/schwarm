@@ -1,0 +1,34 @@
+{
+  "note": "Physics only, not browser frame rate.",
+  "results": [
+    {
+      "name": "current",
+      "population": 4000,
+      "physicsHz": 30,
+      "meanMs": 4.92,
+      "p95Ms": 8.03
+    },
+    {
+      "name": "current",
+      "population": 20000,
+      "physicsHz": 30,
+      "meanMs": 11.97,
+      "p95Ms": 12.93
+    },
+    {
+      "name": "current",
+      "population": 100000,
+      "physicsHz": 15,
+      "meanMs": 57.87,
+      "p95Ms": 61.53
+    }
+  ],
+  "scope": "Physics only; mixed species; adaptive simulation frequency; no browser/GPU frame-rate measurement",
+  "date": "2026-09-11",
+  "steps": 360,
+  "warmupSteps": 60,
+  "world": [
+    2400,
+    1467
+  ]
+}

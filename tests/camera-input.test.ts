@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import { bindCameraInput } from '../lib/camera-input.ts';
+import { Ocean, MAX_FISH, simulationStep } from '../lib/ocean.ts';
+const surface = new EventTarget(), events: unknown[][] = [];
+const dispose = bindCameraInput(surface,{ pan: (x,y) => events.push(['pan',x,y]), zoomAt: (z,x,y) => events.push(['zoom',z,x,y]) },() => ({ width:1000,height:800 }));
+const send = (name: string, properties: object = {}) => {
+  const e = Object.assign(new Event(name,{ cancelable:true }),{ deltaX:0,deltaY:0,deltaMode:0,ctrlKey:false,shiftKey:false,clientX:400,clientY:300 },properties);
+  surface.dispatchEvent(e); return e;
+};
+assert(send('wheel',{ deltaX:24,deltaY:-40 }).defaultPrevented);
+assert.deepEqual(events.pop(),['pan',-24,40]);
+send('wheel',{ deltaY:2,deltaMode:1 }); assert.deepEqual(events.pop(),['pan',-0,-32]);
+send('wheel',{ deltaY:1,deltaMode:2 }); assert.deepEqual(events.pop(),['pan',-0,-800]);
+send('wheel',{ deltaY:30,shiftKey:true }); assert.deepEqual(events.pop(),['pan',-30,0]);
+send('wheel',{ deltaY:-20,ctrlKey:true }); const pinch = events.pop()!;
+assert.equal(pinch[0],'zoom'); assert((pinch[1] as number) > 1); assert.deepEqual(pinch.slice(2),[400,300]);
+send('gesturestart'); send('gesturechange',{ scale:1.2 }); assert(Math.abs((events.pop()![1] as number)-1.2)<1e-9);
+send('wheel',{ deltaY:-20,ctrlKey:true }); assert.equal(events.length,0,'No double zoom in Safari');
+send('gesturechange',{ scale:1.5 }); assert.equal(events.pop()![1],1.25);
+send('gestureend'); send('wheel',{ deltaX:8 }); assert.deepEqual(events.pop(),['pan',-8,-0]);
+dispose(); assert.equal(send('wheel',{ deltaY:10 }).defaultPrevented,false); assert.equal(events.length,0);
+const ocean = new Ocean(null); const before = { ...ocean.camera }; ocean.pan(-40,-20);
+assert(ocean.camera.x > before.x && ocean.camera.y > before.y,'Panning also works in the overview');
+assert.equal(MAX_FISH,100000); assert.equal(simulationStep(100000),1/15); assert.equal(simulationStep(6000),1/30);
+console.log('Two-axis scroll, pinch, Safari gestures, cleanup and overview pan passed');

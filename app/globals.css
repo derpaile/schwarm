@@ -68,3 +68,51 @@ kbd { font-family:inherit; border:1px solid currentColor; opacity:.38; font-size
 @media(max-width:760px) { .topbar { top:23px; left:22px; right:18px; }.brand h1 { font-size:17px; letter-spacing:4px; }.brand-icon { width:38px; height:38px; }.brand p { font-size:10px; }.top-actions { gap:3px; }.fullscreen { display:none; }.population { top:117px; left:25px; }.population-main strong { font-size:34px; }.population-main { margin-bottom:11px; }.species { font-size:11px; gap:12px; }.ecosystem-status { font-size:10px; max-width:150px; line-height:1.6; margin-top:15px; }.eyebrow { font-size:9px; }.right-controls { top:115px; right:20px; }.settings-button { font-size:0; gap:0; padding:11px; }.settings-button>svg:last-child { display:none; }.floating-panel { right:20px; top:166px; width:min(310px,calc(100% - 40px)); max-height:calc(100dvh - 310px); }.info-panel { top:79px; max-height:calc(100dvh - 215px); }.bottom { bottom:max(22px,env(safe-area-inset-bottom)); left:22px; right:22px; height:100px; }.interaction { width:100%; }.toolbar { gap:1px; padding:6px; width:max-content; max-width:100%; }.tool-button { padding:0 9px; font-size:12px; gap:6px; height:40px; }.tool-button svg { width:17px; }.toolbar-divider { margin:0 3px; }.toolbar .icon-button { width:30px; }.speed { min-width:29px; }.hint { white-space:normal; font-size:11px; text-align:center; max-width:310px; line-height:1.6; min-height:34px; }.session { position:absolute; bottom:118px; padding:0; }.session .eyebrow { display:none; }.clock { font-size:12px; }.zen-button { position:absolute; right:0; bottom:109px; }.zen-button span { display:inline; font-size:11px; }.observation { display:none; }.toast { bottom:191px; font-size:11px; max-width:90%; white-space:normal; text-align:center; }.pause-badge { top:82px; font-size:10px; }.return-button { right:20px; bottom:25px; } }
 @media(max-width:380px) { .tool-button { padding:0 7px; }.tool-button span { font-size:11px; }.tool-button svg { width:15px; }.toolbar .icon-button { width:27px; } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; } }
+
+/* A little light, with the living water remaining the main surface. */
+.ocean-app { background:radial-gradient(ellipse at 22% 8%,#24595166 0%,transparent 58%),radial-gradient(ellipse at 83% 76%,#14505945 0%,transparent 46%),linear-gradient(155deg,#0a2b32,#071c25 65%,#061b23); }
+.ocean-light { background:repeating-linear-gradient(116deg,transparent 0%,transparent 13%,#a2d4b904 15%,transparent 18%,transparent 29%); mask-image:linear-gradient(#0009,transparent 80%); }
+.alarm-meter { width:155px; height:2px; background:#a6c9b414; margin-top:24px; overflow:hidden; border-radius:4px; }
+.alarm-meter>span { display:block; height:100%; background:#c5dcb6; transition:width 1.5s ease; }
+.ecosystem-status { margin-top:11px; color:#8baea1; }
+.camera-controls { position:absolute; right:40px; bottom:159px; display:flex; flex-direction:column; align-items:flex-end; gap:11px; }
+.camera-bar { display:flex; align-items:center; border:1px solid #b1cdbc25; border-radius:8px; background:#09272cba; padding:4px; backdrop-filter:blur(15px); }
+.camera-bar .icon-button { width:31px; height:31px; }
+.camera-bar button:disabled { opacity:.3; cursor:default; }
+.zoom-value { border:none; background:transparent; color:#c7d8c9; font-size:13px; min-width:49px; height:31px; font-variant-numeric:tabular-nums; }
+.zoom-value span { color:#75998d; font-size:10px; margin-left:2px; }
+.camera-hint { font-size:10px; color:#7c9e92; }
+.tracking-label { display:flex; flex-direction:column; align-items:flex-end; gap:9px; padding-bottom:9px; }
+.tracking-label strong { font-size:23px; font-weight:300; color:#d2e0d1; letter-spacing:.4px; }
+.tracking-behavior { display:flex; align-items:center; gap:6px; font-size:12px; color:#a4bfae; }
+.tracking-behavior i { width:4px; height:4px; background:#d5b483; border-radius:50%; }
+.zen .ocean-canvas { cursor:grab; }.zen .ocean-canvas:active { cursor:grabbing; }
+.keyboard-help { padding:12px 0; border-top:1px solid #c6dcc020; }
+@media(min-width:1700px) { .camera-controls { right:56px; } }
+@media(max-width:1100px) { .camera-controls { right:28px; }.camera-hint { display:none; } }
+@media(max-width:760px) { .camera-controls { right:22px; bottom:180px; }.camera-bar { padding:3px; }.camera-bar .icon-button { width:28px; height:29px; }.zoom-value { font-size:12px; min-width:42px; }.tracking-label strong { font-size:19px; }.tracking-label { gap:7px; }.tracking-label .eyebrow { font-size:9px; }.alarm-meter { width:130px; margin-top:18px; }.ecosystem-status { margin-top:10px; }.population { pointer-events:none; } }
+.fish-canvas { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.ocean-app.night { background:radial-gradient(ellipse at 25% 16%,#13394540,transparent 65%),linear-gradient(155deg,#071820,#030d19 65%,#071923); }
+.night .ocean-light { opacity:.3; }.night .brand-icon { color:#97d7d1; }
+.scenario-buttons { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.scenario-buttons button { background:#a1cbbb0a; border:1px solid #a9cbbb2a; border-radius:7px; padding:11px 4px; font-size:13px; color:#d0dfcd; }
+.scenario-buttons button:hover { background:#a1cbbb20; border-color:#a9cbbb65; }
+.scenario-buttons span { display:block; font-size:10px; color:#8aafa0; margin-top:7px; }
+.stock-row { display:flex; align-items:center; gap:12px; margin-top:12px; }.stock-row .setting-help { margin:0; flex:1; }
+.stock-row button { border:1px solid #a8cbb633; border-radius:5px; background:#9dd1b614; color:#c1dec8; font-size:12px; padding:8px; flex-shrink:0; }
+.performance-readout { display:block; font-size:11px; color:#739a8e; margin-top:9px; }.session .clock { margin-top:8px; }
+.observation-sub { max-width:285px; line-height:1.65; }.observation { bottom:184px; }
+.toolbar { gap:3px; }.tool-button { padding:0 9px; gap:7px; }.toolbar kbd { display:none; }
+.settings-panel { width:330px; max-height:calc(100dvh - 235px); }
+@media(max-width:1280px) { .tool-button:not(.selected) span { display:none; }.tool-button { min-width:40px; }.observation-sub { max-width:240px; } }
+@media(max-width:760px) { .toolbar { gap:0; padding:5px; }.tool-button { padding:0 7px; min-width:33px; }.tool-button.selected span { display:none; }.tool-button.selected { min-width:37px; }.toolbar .speed { min-width:27px; }.toolbar .toolbar-divider { margin:0 2px; }.settings-panel { width:min(330px,calc(100% - 40px)); max-height:calc(100dvh - 290px); }.performance-readout { font-size:10px; }.session { bottom:115px; }.session .clock { margin-top:7px; }.camera-controls { bottom:193px; }.camera-controls .tracking-label { display:none; }.camera-controls:has(.active) .tracking-label { display:flex; }.camera-hint { display:none; } }
+.fish-census { display:flex; flex-direction:column; gap:8px; font-size:12px; color:#a4bfb5; }
+.fish-census>span { display:flex; align-items:center; gap:8px; font-variant-numeric:tabular-nums; }
+.predator-census { display:grid; grid-template-columns:repeat(2,max-content); gap:8px 16px; margin-top:16px; padding-top:13px; border-top:1px solid #a6c9b419; }
+.species-picker { display:flex; align-items:center; gap:10px; padding:7px 12px; border:1px solid #b7d1c126; border-radius:8px; background:#0b292deb; pointer-events:auto; max-width:min(640px,calc(100vw - 40px)); }
+.species-picker label { font-size:12px; color:#97b9a9; white-space:nowrap; }.species-picker select { min-width:125px; color:#d6e6d4; font-size:14px; }
+.species-description { font-size:12px; line-height:1.45; color:#9ab7ab; max-width:290px; }
+.interaction { gap:11px; }.population-main { margin-bottom:12px; }
+@media(max-width:1280px) { .species-description { display:none; } }
+@media(max-width:760px) { .species-picker { padding:5px 10px; gap:9px; }.species-picker select { min-width:140px; }.fish-census { font-size:11px; gap:6px; }.predator-census { gap:7px 11px; font-size:10px; }.population-main>span { font-size:11px; }.population-main strong { font-size:30px; }.toolbar .tool-button { min-width:30px; padding:0 6px; }.toolbar .tool-button.selected { min-width:32px; }.toolbar .pause { width:26px; }.session { bottom:170px; }.zen-button { bottom:164px; }.camera-controls { bottom:244px; }.toast { bottom:239px; } }
+html,body { overscroll-behavior:none; }
